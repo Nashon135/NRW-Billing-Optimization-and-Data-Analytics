@@ -1,4 +1,5 @@
 # Import necessary libraries
+import os
 import base64
 import io
 from io import StringIO # Explicitly import StringIO

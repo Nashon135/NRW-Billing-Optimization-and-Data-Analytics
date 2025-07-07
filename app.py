@@ -489,4 +489,13 @@ def update_and_display_dashboard(uploaded_contents, clear_clicks, uploaded_filen
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Get port from environment variable, default to 8050 if not set
+    # This is crucial for deployment platforms like Streamlit Cloud, Heroku, Render, etc.
+    # They assign a dynamic port.
+    port = os.environ.get('PORT', 8050)
+
+    # Get host from environment variable, default to '0.0.0.0' for external access
+    # '0.0.0.0' makes the app accessible from outside the container/server
+    host = os.environ.get('HOST', '0.0.0.0')
+
+    app.run(host=host, port=port) # debug=True has been removed
